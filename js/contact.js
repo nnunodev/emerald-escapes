@@ -23,21 +23,21 @@ if (enquiryForm) {
 
         // Name cannot be empty or contain only spaces
         nameInput.setCustomValidity(
-            nameInput.value.trim() ?
-            "" :
-            "Please enter your name"
+            nameInput.value.trim()
+                ? ""
+                : "Please enter your name"
         );
 
         // Email must contain a domain extension
         const emailPattern = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
 
         emailInput.setCustomValidity(
-            emailInput.value && !emailPattern.test(emailInput.value) ?
-            "Please enter a valid email address" :
-            ""
+            emailInput.value && !emailPattern.test(emailInput.value)
+                ? "Please enter a valid email address"
+                : ""
         );
 
-        // Phone number must contain 7-15 digits
+        // Reject blank or whitespace-only phone numbers as well as invalid formats.
         const phone = phoneInput.value.trim();
         const digits = phone.replace(/\D/g, "");
 
@@ -47,16 +47,16 @@ if (enquiryForm) {
             digits.length <= 15;
 
         phoneInput.setCustomValidity(
-            phone && !validPhone ?
-            "Please enter a valid phone number" :
-            ""
+            validPhone
+                ? ""
+                : "Please enter a valid phone number"
         );
 
         // Message must contain at least 20 characters
         messageInput.setCustomValidity(
-            messageInput.value.trim().length >= 20 ?
-            "" :
-            "Message must contain at least 20 characters"
+            messageInput.value.trim().length >= 20
+                ? ""
+                : "Message must contain at least 20 characters"
         );
     }
 
@@ -64,10 +64,10 @@ if (enquiryForm) {
     /* Validate Fields While Typing */
 
     [nameInput, emailInput, phoneInput, messageInput]
-    .forEach(function (input) {
+        .forEach(function (input) {
 
-        input.addEventListener("input", validateFields);
-    });
+            input.addEventListener("input", validateFields);
+        });
 
 
     /* Form Submission */
@@ -106,10 +106,10 @@ if (enquiryForm) {
 
         // Clear custom validation errors
         [nameInput, emailInput, phoneInput, messageInput]
-        .forEach(function (input) {
+            .forEach(function (input) {
 
-            input.setCustomValidity("");
-        });
+                input.setCustomValidity("");
+            });
 
         // Clear previous error messages
         formMessage.textContent = "";
