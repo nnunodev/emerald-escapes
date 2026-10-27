@@ -166,6 +166,38 @@ body > main {
     }
 }
 
+/* A fixed arrow that stays within the safe area on mobile screens. */
+.back-to-top {
+    position: fixed;
+    right: calc(1rem + env(safe-area-inset-right, 0px));
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    z-index: 1020;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid var(--ee-border);
+    border-radius: 50%;
+    background: var(--ee-selected);
+    color: var(--ee-selected-text);
+    box-shadow: var(--ee-shadow);
+    cursor: pointer;
+}
+
+.back-to-top[hidden] {
+    display: none;
+}
+
+.back-to-top:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:focus-visible {
+    outline: 3px solid var(--ee-focus);
+    outline-offset: 3px;
+}
+
 .navbar-brand {
     display: inline-flex;
     align-items: center;
