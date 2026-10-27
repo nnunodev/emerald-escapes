@@ -1,0 +1,12 @@
+# Keep the college assignment brief and temporary documents local.
+CA1 - Web Design 40_.docx
+~$*
+
+# Local settings, credentials and generated files.
+.env
+.env.*
+!.env.example
+node_modules/
+*.zip
+.DS_Store
+Thumbs.db

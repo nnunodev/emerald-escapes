@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#198754">
+    <link rel="icon" type="image/svg+xml" href="images/emerald-logo.svg">
+    <script src="js/theme.js"></script>
+    <title>Experiences | Emerald Escapes</title>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+                <div class="container">
+
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/emerald-logo.svg" class="brand-logo" width="42" height="42" alt="">
+                        <span>Emerald Escapes</span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <div class="navbar-nav ms-auto">
+                            <a class="nav-link " href="index.html">Home</a>
+                            <a class="nav-link active" aria-current="page" href="experiences.html">Experiences</a>
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </div>
+                        <button type="button" id="themeToggle" class="theme-toggle ms-lg-3 mt-3 mt-lg-0 mb-2 mb-lg-0"
+                            role="switch" aria-checked="false" aria-label="Dark mode">
+                            <svg class="theme-icon theme-icon-moon" width="22" height="22" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+                            </svg>
+                            <svg class="theme-icon theme-icon-sun" width="22" height="22" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                aria-hidden="true" focusable="false">
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+        </nav>
+    </header>
+    <main>
+        <section class="experiences py-4">
+            <div class="container">
+
+                <div class="experiences-intro text-center mb-4">
+                    <p class="experiences-eyebrow mb-2">YOUR NEXT IRISH ADVENTURE</p>
+                    <h1 class="display-5 fw-semibold">Discover Our Experiences</h1>
+                    <p class="lead mb-0">
+                        Find your next adventure across Ireland.
+                    </p>
+                </div>
+
+                <!-- Experience filters -->
+                <div class="experience-filter-panel mb-3">
+                    <div class="row g-3 align-items-start">
+
+                        <div class="col-md-4">
+                            <label for="categoryFilter" class="form-label">
+                                Category
+                            </label>
+
+                            <select id="categoryFilter" class="form-select">
+                                <option value="all">All Categories</option>
+                                <option value="city">City</option>
+                                <option value="coastal">Coastal</option>
+                                <option value="countryside">Countryside</option>
+                                <option value="family">Family</option>
+                                <option value="cultural">Cultural</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="priceFilter" class="form-label">
+                                Price Range
+                            </label>
+
+                            <select id="priceFilter" class="form-select">
+                                <option value="all">All Prices</option>
+                                <option value="0-100">Under €100</option>
+                                <option value="100-200">€100 - €200</option>
+                                <option value="200-9999">Over €200</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <span class="form-label d-block">Your favourites</span>
+                            <button type="button" id="favouritesFilter" class="favourites-callout"
+                                aria-pressed="false" aria-controls="experienceList" aria-describedby="favouritesHint">
+                                <span id="favouritesHeart" class="favourites-heart" aria-hidden="true">♡</span>
+                                <span id="favouritesCount" class="favourites-status">Show favourites (0)</span>
+                            </button>
+                            <p id="favouritesHint" class="favourites-hint mb-0">
+                                Save experiences using the hearts below.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-results-bar mb-3">
+                    <p id="resultsCount" class="mb-0" role="status" aria-live="polite" aria-atomic="true"></p>
+                    <button type="button" id="clearFilters" class="btn btn-outline-success" disabled>
+                        Clear filters
+                    </button>
+                </div>
+                <!-- Experience cards -->
+                <div class="row g-4" id="experienceList">
+                    <!-- Dublin -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="city" data-price="129"
+                        data-id="dublin">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/dublin.jpg" class="card-img-top" alt="Colourful streets of Dublin">
+
+                            <div class="card-body">
+                                <h2 class="h5">Dublin City Break</h2>
+                                <p class="text-muted">Dublin, Ireland</p>
+                                <p>
+                                    Explore the capital's historic
+                                    streets, museums and lively culture.
+                                </p>
+                                <p>Duration: 2 days</p>
+                                <p class="fw-bold">€129 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Cliffs of Moher -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="coastal" data-price="89"
+                        data-id="cliffs-moher">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/cliffs-moher.jpg" class="card-img-top"
+                                alt="Cliffs of Moher overlooking the sea">
+
+                            <div class="card-body">
+                                <h2 class="h5">Cliffs of Moher Adventure</h2>
+                                <p class="text-muted">County Clare</p>
+                                <p>
+                                    Experience breathtaking Atlantic
+                                    views along Ireland's west coast.
+                                </p>
+                                <p>Duration: 1 day</p>
+                                <p class="fw-bold">€89 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Killarney -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="countryside" data-price="249"
+                        data-id="killarney">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/killarney.jpg" class="card-img-top" alt="Mountains and lakes in Killarney">
+
+                            <div class="card-body">
+                                <h2 class="h5">Killarney Nature Escape</h2>
+                                <p class="text-muted">County Kerry</p>
+                                <p>
+                                    Discover peaceful lakes, beautiful
+                                    mountains and scenic walking trails.
+                                </p>
+                                <p>Duration: 3 days</p>
+                                <p class="fw-bold">€249 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- Galway -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="city" data-price="159"
+                        data-id="galway">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/galway.jpg" class="card-img-top" alt="Colourful streets in Galway city">
+
+                            <div class="card-body">
+                                <h2 class="h5">Galway City Escape</h2>
+                                <p class="text-muted">County Galway</p>
+                                <p>Discover colourful streets, traditional music
+                                    and Galway's vibrant atmosphere.</p>
+                                <p>Duration: 2 days</p>
+                                <p class="fw-bold">€159 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Cork -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="city" data-price="189" data-id="cork">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/cork.jpg" class="card-img-top" alt="View of Cork city and the River Lee">
+
+                            <div class="card-body">
+                                <h2 class="h5">Cork City Discovery</h2>
+                                <p class="text-muted">County Cork</p>
+                                <p>Explore the English Market, historic streets
+                                    and the food culture of Cork.</p>
+                                <p>Duration: 2 days</p>
+                                <p class="fw-bold">€189 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Dingle -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="coastal" data-price="149"
+                        data-id="dingle">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/dingle.jpg" class="card-img-top"
+                                alt="Scenic coastline of the Dingle Peninsula">
+
+                            <div class="card-body">
+                                <h2 class="h5">Dingle Coastal Adventure</h2>
+                                <p class="text-muted">County Kerry</p>
+                                <p>Enjoy scenic coastal drives, sandy beaches
+                                    and charming fishing villages.</p>
+                                <p>Duration: 2 days</p>
+                                <p class="fw-bold">€149 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Wicklow -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="countryside" data-price="79"
+                        data-id="wicklow">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/wicklow.jpg" class="card-img-top"
+                                alt="Glendalough lakes in the Wicklow Mountains">
+
+                            <div class="card-body">
+                                <h2 class="h5">Wicklow Mountain Trails</h2>
+                                <p class="text-muted">County Wicklow</p>
+                                <p>Explore the beautiful Wicklow Mountains,
+                                    peaceful lakes and woodland trails.</p>
+                                <p>Duration: 1 day</p>
+                                <p class="fw-bold">€79 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Fota Wildlife Park -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="family" data-price="65"
+                        data-id="fota-wildlife-park">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/fota.jpg" class="card-img-top" alt="Animals at Fota Wildlife Park">
+
+                            <div class="card-body">
+                                <h2 class="h5">Fota Family Adventure</h2>
+                                <p class="text-muted">County Cork</p>
+                                <p>Enjoy a family day exploring wildlife
+                                    and learning about animals.</p>
+                                <p>Duration: 1 day</p>
+                                <p class="fw-bold">€65 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Newgrange -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="cultural" data-price="75"
+                        data-id="newgrange">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/newgrange.jpg" class="card-img-top"
+                                alt="Ancient passage tomb at Newgrange">
+
+                            <div class="card-body">
+                                <h2 class="h5">Newgrange Heritage Experience</h2>
+                                <p class="text-muted">County Meath</p>
+                                <p>Discover one of Ireland's most remarkable
+                                    prehistoric monuments.</p>
+                                <p>Duration: 1 day</p>
+                                <p class="fw-bold">€75 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- Aran Islands -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="coastal" data-price="199"
+                        data-id="aran-islands">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/aran-islands.jpg" class="card-img-top"
+                                alt="Rocky coastline of the Aran Islands">
+
+                            <div class="card-body">
+                                <h2 class="h5">Aran Islands Discovery</h2>
+                                <p class="text-muted">County Galway</p>
+                                <p>Experience island life, traditional culture
+                                    and breathtaking Atlantic scenery.</p>
+                                <p>Duration: 2 days</p>
+                                <p class="fw-bold">€199 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Connemara -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="countryside" data-price="179"
+                        data-id="connemara">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/connemara.jpg" class="card-img-top" alt="Mountains and lakes in Connemara">
+
+                            <div class="card-body">
+                                <h2 class="h5">Connemara Wilderness Escape</h2>
+                                <p class="text-muted">County Galway</p>
+                                <p>Discover rugged mountains, peaceful lakes
+                                    and stunning countryside.</p>
+                                <p>Duration: 2 days</p>
+                                <p class="fw-bold">€179 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Kilkenny -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="cultural" data-price="99"
+                        data-id="kilkenny">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/kilkenny.jpg" class="card-img-top" alt="Historic Kilkenny Castle">
+
+                            <div class="card-body">
+                                <h2 class="h5">Kilkenny Heritage Tour</h2>
+                                <p class="text-muted">County Kilkenny</p>
+                                <p>Explore medieval streets, historic buildings
+                                    and the famous Kilkenny Castle.</p>
+                                <p>Duration: 1 day</p>
+                                <p class="fw-bold">€99 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Emerald Park -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="family" data-price="69"
+                        data-id="emerald-park">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/emerald-park.jpg" class="card-img-top"
+                                alt="Roller coasters at Emerald Park">
+
+                            <div class="card-body">
+                                <h2 class="h5">Emerald Park Family Day</h2>
+                                <p class="text-muted">County Meath</p>
+                                <p>Enjoy an exciting family day with thrilling
+                                    rides and fun attractions.</p>
+                                <p>Duration: 1 day</p>
+                                <p class="fw-bold">€69 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Bunratty Castle -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="cultural" data-price="109"
+                        data-id="bunratty-castle">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/bunratty.jpg" class="card-img-top"
+                                alt="Medieval Bunratty Castle in County Clare">
+
+                            <div class="card-body">
+                                <h2 class="h5">Bunratty Castle Experience</h2>
+                                <p class="text-muted">County Clare</p>
+                                <p>Step back in time and explore medieval
+                                    Irish history and traditional village life.</p>
+                                <p>Duration: 1 day</p>
+                                <p class="fw-bold">€109 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Donegal -->
+                    <div class="col-md-6 col-lg-4 experience-card" data-category="coastal" data-price="229"
+                        data-id="donegal">
+
+                        <article class="card h-100 experience-preview">
+                            <img src="images/donegal.jpg" class="card-img-top" alt="Wild Atlantic coastline in Donegal">
+
+                            <div class="card-body">
+                                <h2 class="h5">Donegal Coastal Escape</h2>
+                                <p class="text-muted">County Donegal</p>
+                                <p>Explore dramatic cliffs, quiet beaches
+                                    and the beauty of the Wild Atlantic Way.</p>
+                                <p>Duration: 3 days</p>
+                                <p class="fw-bold">€229 per person</p>
+                                <button type="button" class="btn btn-outline-success favourite-btn"
+                                    aria-pressed="false">
+                                    ♡ Save to Favourites
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+                <p id="noResults" class="text-center mt-4 d-none" role="status">
+                    No experiences found. Try changing your filters.
+                </p>
+            </div>
+        </section>
+    </main>
+
+
+
+    <footer>
+        <p>&copy; 2026 Emerald Escapes</p>
+    </footer>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/favourites.js"></script>
+</body>
+
+</html>

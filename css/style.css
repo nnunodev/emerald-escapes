@@ -1,0 +1,367 @@
+/* Shared theme colours. Bootstrap also uses data-bs-theme for forms and text. */
+:root {
+    color-scheme: light;
+    --ee-heading: #164a3a;
+    --ee-muted: #52645a;
+    --ee-accent: #198754;
+    --ee-surface: #ffffff;
+    --ee-section: #f5f7f2;
+    --ee-border: #d6dfd8;
+    --ee-soft-green: #e5f3e9;
+    --ee-hover-green: #d1eada;
+    --ee-selected: #164a3a;
+    --ee-selected-text: #ffffff;
+    --ee-focus: #164a3a;
+    --ee-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-bs-theme="dark"] {
+    color-scheme: dark;
+    --bs-body-bg: #101b17;
+    --bs-body-color: #e6eee9;
+    --bs-secondary-color: #b0c0b6;
+    --bs-border-color: #43594c;
+    --ee-heading: #b4edcd;
+    --ee-muted: #b0c0b6;
+    --ee-accent: #88d9ab;
+    --ee-surface: #192a22;
+    --ee-section: #15241d;
+    --ee-border: #43594c;
+    --ee-soft-green: #203d2d;
+    --ee-hover-green: #2c503b;
+    --ee-selected: #a3e4bd;
+    --ee-selected-text: #10271b;
+    --ee-focus: #a3e4bd;
+    --ee-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-weight: 600;
+}
+
+.brand-logo {
+    flex-shrink: 0;
+}
+
+.theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    padding: 0;
+    color: #ffffff;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.theme-icon {
+    grid-area: 1 / 1;
+    transform-origin: center;
+    transition: opacity 220ms ease-out, transform 220ms ease-out;
+}
+
+.theme-icon-sun {
+    opacity: 0;
+    transform: rotate(-45deg) scale(0.65);
+}
+
+.theme-icon-moon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+[data-bs-theme="dark"] .theme-icon-sun {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+[data-bs-theme="dark"] .theme-icon-moon {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-icon {
+        transition: none;
+    }
+}
+
+.card {
+    background-color: var(--ee-surface);
+}
+
+/* Brighter outlines keep success buttons readable against dark surfaces. */
+[data-bs-theme="dark"] .btn-outline-success {
+    --bs-btn-color: #88d9ab;
+    --bs-btn-border-color: #88d9ab;
+    --bs-btn-hover-color: #10271b;
+    --bs-btn-hover-bg: #88d9ab;
+    --bs-btn-hover-border-color: #88d9ab;
+    --bs-btn-active-color: #10271b;
+    --bs-btn-active-bg: #88d9ab;
+    --bs-btn-active-border-color: #88d9ab;
+    --bs-btn-focus-shadow-rgb: 136, 217, 171;
+    --bs-btn-disabled-color: #b0c0b6;
+    --bs-btn-disabled-border-color: #b0c0b6;
+}
+
+/* Keep navigation readable and mark the current page with more than colour. */
+.navbar.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.navbar.navbar-dark .navbar-nav .nav-link.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+}
+
+.navbar .nav-link:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* Home page hero banner */
+.hero {
+    min-height: 65vh;
+    padding: 5rem 0;
+
+    background-color: #164a3a;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.35)),
+        url("../images/ireland-hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero h1 {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Adjust hero layout for mobile screens */
+@media (max-width: 576px) {
+    .hero {
+        min-height: 480px;
+        text-align: center;
+    }
+}
+
+
+/* About section */
+.about {
+    background-color: var(--ee-section);
+}
+
+.about h2,
+.featured h2 {
+    color: var(--ee-heading);
+}
+
+/* Featured experiences */
+.featured {
+    background-color: var(--bs-body-bg);
+}
+
+.experience-preview {
+    border: none;
+    overflow: hidden;
+    box-shadow: var(--ee-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Make all card images the same size */
+.experience-preview img {
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Card hover effect */
+.experience-preview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Keep the description flexible and the price and save action aligned. */
+.experience-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.experience-card .card-body > p:nth-of-type(2) {
+    flex-grow: 1;
+}
+
+.experience-card .favourite-btn {
+    align-self: flex-start;
+    min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .experience-preview {
+        transition: none;
+    }
+
+    .experience-preview:hover {
+        transform: none;
+    }
+}
+
+/* Experiences page heading and filters */
+.experiences-intro h1 {
+    color: var(--ee-heading);
+    letter-spacing: -0.035em;
+}
+
+.experiences-intro .lead {
+    color: var(--ee-muted);
+}
+
+.experiences-eyebrow {
+    color: var(--ee-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.experience-filter-panel {
+    padding: 1.25rem;
+    background-color: var(--ee-section);
+    border: 1px solid var(--ee-border);
+    border-radius: 1rem;
+}
+
+.experience-filter-panel .form-label {
+    color: var(--ee-heading);
+    font-weight: 600;
+}
+
+.experience-filter-panel .form-select {
+    min-height: 3rem;
+    border-color: var(--ee-border);
+    border-radius: 0.65rem;
+}
+
+.experience-filter-panel .form-select:focus {
+    border-color: var(--ee-accent);
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+}
+
+.favourites-status {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.favourites-callout {
+    width: 100%;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: var(--ee-heading);
+    padding: 0.65rem 1rem;
+    background: var(--ee-soft-green);
+    border: 1px solid var(--ee-accent);
+    border-radius: 0.75rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.favourites-callout:hover {
+    background: var(--ee-hover-green);
+}
+
+.favourites-callout[aria-pressed="true"] {
+    background: var(--ee-selected);
+    color: var(--ee-selected-text);
+    border-color: var(--ee-selected);
+}
+
+.favourites-callout:focus-visible,
+.experience-results-bar .btn:focus-visible {
+    outline: 3px solid var(--ee-focus);
+    outline-offset: 3px;
+}
+
+.favourites-heart {
+    color: inherit;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.favourites-hint {
+    margin-top: 0.5rem;
+    color: var(--ee-muted);
+    font-size: 0.85rem;
+}
+
+.experience-results-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: var(--ee-muted);
+}
+
+.experience-results-bar .btn {
+    min-height: 44px;
+}
+
+@media (max-width: 576px) {
+    .brand-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navbar-brand {
+        gap: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .experience-filter-panel {
+        padding: 1rem;
+    }
+
+    .favourites-callout {
+        min-height: 3.5rem;
+    }
+
+    .experiences-intro h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Enquiry success confirmation */
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #198754;
+    color: white;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2.5rem;
+    font-weight: bold;
+}

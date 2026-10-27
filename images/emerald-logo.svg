@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>Emerald Escapes</title>
+  <desc>Irish hills beneath a warm sun, with a winding path inviting you to explore.</desc>
+  <defs>
+    <clipPath id="landscape">
+      <circle cx="32" cy="32" r="27"/>
+    </clipPath>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="#eef7ef"/>
+  <g clip-path="url(#landscape)">
+    <circle cx="44" cy="19" r="5" fill="#dca44c"/>
+    <path d="M3 43 23 19 43 40 59 30 64 64H0Z" fill="#78be97"/>
+    <path d="M0 45Q18 28 35 38T64 35V64H0Z" fill="#198754"/>
+    <path d="M0 53Q27 37 64 45V64H0Z" fill="#164a3a"/>
+    <path d="M31 35C49 43 25 49 40 64H23C11 49 43 43 31 35Z" fill="#eef7ef"/>
+  </g>
+</svg>
