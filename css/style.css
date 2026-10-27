@@ -313,8 +313,6 @@ body > main {
 
 /* Keep navigation readable and mark the current page with more than colour. */
 .navbar .navbar-nav {
-    position: relative;
-    isolation: isolate;
     gap: 0.25rem;
 }
 
@@ -325,44 +323,41 @@ body > main {
     width: fit-content;
     min-height: 44px;
     color: #ffffff;
-    border-radius: 999px;
 }
 
 .navbar.navbar-dark .navbar-nav .nav-link.active {
     font-weight: 700;
-    background: #164a3a;
-    box-shadow: inset 0 0 0 1px var(--ee-nav-orange);
 }
 
-.nav-indicator {
-    display: none;
+/* A simple underline fades in and out; it does not move or grow. */
+.navbar .navbar-nav .nav-link::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background: #164a3a;
-    border: 1px solid var(--ee-nav-orange);
-    border-radius: 999px;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.3rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ee-nav-orange);
+    opacity: 0;
     pointer-events: none;
-    transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1), width 220ms ease;
+    transition: opacity 150ms ease;
 }
 
-.navbar .has-nav-indicator .nav-indicator {
-    display: block;
+@media (hover: hover) {
+    .navbar .navbar-nav .nav-link:hover::after {
+        opacity: 1;
+    }
 }
 
-.navbar.navbar-dark .has-nav-indicator .nav-link.active {
-    background: transparent;
-    box-shadow: none;
-}
-
-.nav-indicator.is-instant {
-    transition: none;
+.navbar .navbar-nav .nav-link:focus-visible::after {
+    opacity: 1;
 }
 
 @media (max-width: 991.98px) {
-    .navbar.navbar-dark .navbar-nav .nav-link {
-        padding-inline: 0.85rem;
+    .navbar .navbar-nav .nav-link::after {
+        left: 0;
+        right: 0;
     }
 }
 
@@ -439,7 +434,7 @@ body > main {
 
 @media (prefers-reduced-motion: reduce) {
     .brand-logo,
-    .nav-indicator,
+    .navbar .navbar-nav .nav-link::after,
     .hero-cta svg {
         transition: none;
     }
