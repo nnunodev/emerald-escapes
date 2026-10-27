@@ -30,9 +30,12 @@ js/filter.js
 js/favourites.js
 js/theme.js
 images/
+fonts/
 vendor/bootstrap/
 ```
 
 Built with HTML, CSS, JavaScript and Bootstrap 5.3.8. Bootstrap is bundled locally and retains its copyright and MIT licence notices.
+
+Headings use Lora by Cyreal; body text and controls use DM Sans by Colophon Foundry. The Latin variable WOFF2 fonts are bundled from Google Fonts for offline use. Their SIL Open Font License notices are included in `fonts/lora-OFL.txt` and `fonts/dm-sans-OFL.txt`.
 
 Company details, experiences and prices are presented for coursework purposes. This repository records the project in progress.

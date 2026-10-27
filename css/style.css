@@ -1,5 +1,25 @@
+/* Google Fonts bundled locally so typography works without an internet connection. */
+@font-face {
+    font-family: "DM Sans";
+    src: url("../fonts/dm-sans-latin.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 100 1000;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Lora";
+    src: url("../fonts/lora-latin.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+}
+
 /* Shared theme colours. Bootstrap also uses data-bs-theme for forms and text. */
 :root {
+    --bs-font-sans-serif: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --bs-body-line-height: 1.65;
+    --ee-font-heading: "Lora", Georgia, serif;
     color-scheme: light;
     --ee-heading: #164a3a;
     --ee-muted: #52645a;
@@ -33,6 +53,17 @@
     --ee-selected-text: #10271b;
     --ee-focus: #a3e4bd;
     --ee-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ee-font-heading);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.lead {
+    font-weight: 400;
 }
 
 /* Let the main content fill short pages so the footer stays at the bottom. */
@@ -238,13 +269,13 @@ body > main {
 
 /* Home page hero banner */
 .hero {
-    min-height: 65vh;
-    padding: 5rem 0;
+    min-height: clamp(480px, 65vh, 680px);
+    padding: 4.5rem 0;
 
     background-color: #164a3a;
     background-image:
-        linear-gradient(rgba(0, 0, 0, 0.55),
-            rgba(0, 0, 0, 0.35)),
+        linear-gradient(90deg, rgba(5, 25, 18, 0.82) 0%,
+            rgba(5, 25, 18, 0.65) 42%, rgba(5, 25, 18, 0.15) 100%),
         url("../images/ireland-hero.jpg");
 
     background-size: cover;
@@ -253,14 +284,62 @@ body > main {
 }
 
 .hero h1 {
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.25rem;
+    font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.12;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-title-line {
+    display: block;
+}
+
+.hero .lead {
+    max-width: 46ch;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    line-height: 1.65;
+}
+
+.hero-cta {
+    --bs-btn-color: #164a3a;
+    --bs-btn-bg: #ffffff;
+    --bs-btn-border-color: #ffffff;
+    --bs-btn-hover-color: #164a3a;
+    --bs-btn-hover-bg: #eef7ef;
+    --bs-btn-hover-border-color: #eef7ef;
+    --bs-btn-active-color: #164a3a;
+    --bs-btn-active-bg: #eef7ef;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.hero-cta:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
 }
 
 /* Adjust hero layout for mobile screens */
 @media (max-width: 576px) {
     .hero {
         min-height: 480px;
+        padding: 3.5rem 0;
         text-align: center;
+        background-image:
+            linear-gradient(rgba(5, 25, 18, 0.65), rgba(5, 25, 18, 0.65)),
+            url("../images/ireland-hero.jpg");
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 8.5vw, 2.6rem);
+    }
+
+    .hero .lead {
+        margin-inline: auto;
     }
 }
 
@@ -268,6 +347,15 @@ body > main {
 /* About section */
 .about {
     background-color: var(--ee-section);
+}
+
+.about-copy {
+    max-width: 62ch;
+    margin-inline: auto;
+}
+
+.about-copy .lead {
+    font-size: 1.2rem;
 }
 
 .about h2,
@@ -327,7 +415,7 @@ body > main {
 /* Experiences page heading and filters */
 .experiences-intro h1 {
     color: var(--ee-heading);
-    letter-spacing: -0.035em;
+    letter-spacing: -0.02em;
 }
 
 .experiences-intro .lead {
