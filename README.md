@@ -11,6 +11,7 @@ A responsive travel website for a fictional company offering holidays, short bre
 - Booking enquiry form with client-side validation and confirmation feedback.
 - Light and dark themes with a remembered preference and an animated sun/moon control.
 - Responsive layouts, a custom landscape logo and keyboard focus indicators.
+- A single animated desktop navigation highlight, with a static mobile current-page marker.
 - A back-to-top arrow with smooth scrolling and reduced-motion support.
 
 ## Run locally
@@ -30,6 +31,7 @@ js/contact.js
 js/filter.js
 js/favourites.js
 js/theme.js
+js/navigation.js
 js/back-to-top.js
 images/
 fonts/
