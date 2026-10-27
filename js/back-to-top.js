@@ -10,7 +10,10 @@
         if (shouldHide && document.activeElement === button && topLink) {
             topLink.focus({ preventScroll: true });
         }
-        button.hidden = shouldHide;
+        // Leave the button rendered for the fade, but remove hidden controls from interaction.
+        button.classList.toggle("is-visible", !shouldHide);
+        button.tabIndex = shouldHide ? -1 : 0;
+        button.setAttribute("aria-hidden", String(shouldHide));
     }
 
     button.addEventListener("click", function () {
@@ -25,5 +28,7 @@
     window.addEventListener("scroll", updateVisibility, { passive: true });
     window.addEventListener("resize", updateVisibility);
     window.addEventListener("pageshow", updateVisibility);
+    // CSS now handles visibility; the initial hidden attribute prevents a pre-script flash.
+    button.hidden = false;
     updateVisibility();
 })();
