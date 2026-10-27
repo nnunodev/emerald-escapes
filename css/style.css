@@ -35,6 +35,106 @@
     --ee-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
+/* Let the main content fill short pages so the footer stays at the bottom. */
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > main {
+    flex: 1 0 auto;
+}
+
+.site-footer {
+    margin-top: auto;
+    padding: 1.75rem 0 1rem;
+    background: var(--ee-section);
+    border-top: 1px solid var(--ee-border);
+    color: var(--ee-muted);
+}
+
+.footer-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--ee-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-brand:hover {
+    color: var(--ee-heading);
+}
+
+.footer-tagline {
+    margin: 0.6rem 0 0;
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ee-heading);
+    text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+}
+
+.footer-brand:focus-visible,
+.footer-links a:focus-visible {
+    outline: 2px solid var(--ee-focus);
+    outline-offset: 3px;
+    border-radius: 0.2rem;
+}
+
+.footer-copyright {
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--ee-border);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 575.98px) {
+    .footer-main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
+    .footer-copyright {
+        text-align: center;
+    }
+}
+
 .navbar-brand {
     display: inline-flex;
     align-items: center;
