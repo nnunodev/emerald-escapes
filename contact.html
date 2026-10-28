@@ -94,14 +94,17 @@
                                     Booking Enquiry
                                 </h2>
 
-                                <form id="enquiryForm" novalidate>
+                                <form id="enquiryForm" aria-describedby="requiredFieldsHint" novalidate>
+                                    <p id="requiredFieldsHint" class="form-text mt-0 mb-4">
+                                        Fields marked with <span class="required-marker">*</span> are required.
+                                    </p>
 
                                     <div class="row g-3">
 
                                         <!-- Name -->
                                         <div class="col-md-6">
                                             <label for="name" class="form-label">
-                                                Full Name
+                                                Full Name <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
                                             <input type="text" class="form-control" id="name" name="name" required>
                                             <div class="invalid-feedback">
@@ -112,7 +115,7 @@
                                         <!-- Email -->
                                         <div class="col-md-6">
                                             <label for="email" class="form-label">
-                                                Email Address
+                                                Email Address <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
                                             <input type="email" class="form-control" id="email" name="email" required>
                                             <div class="invalid-feedback">
@@ -123,7 +126,7 @@
                                         <!-- Phone -->
                                         <div class="col-md-6">
                                             <label for="phone" class="form-label">
-                                                Phone Number
+                                                Phone Number <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
                                             <input type="tel" class="form-control" id="phone" name="phone"
                                                 placeholder="087 123 4567" required>
@@ -135,7 +138,7 @@
                                         <!-- Query Type -->
                                         <div class="col-md-6">
                                             <label for="queryType" class="form-label">
-                                                Query Type
+                                                Query Type <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
                                             <select class="form-select" id="queryType" name="queryType" required>
                                                 <option value="">
@@ -156,7 +159,7 @@
                                         <!-- Message -->
                                         <div class="col-12">
                                             <label for="message" class="form-label">
-                                                Your Message
+                                                Your Message <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
                                             <textarea class="form-control" id="message" name="message" rows="5"
                                                 minlength="20" required></textarea>

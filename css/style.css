@@ -672,6 +672,12 @@ body > main {
     }
 }
 
+/* Required fields retain their native required attribute for assistive technology. */
+.required-marker {
+    color: var(--ee-orange);
+    font-weight: 700;
+}
+
 /* Enquiry success confirmation */
 .success-icon {
     width: 80px;
