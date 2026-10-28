@@ -83,19 +83,18 @@ body > main {
 
 .site-footer {
     margin-top: auto;
-    padding: 1.75rem 0 1rem;
+    padding: 2.5rem 0 1.25rem;
     background: var(--ee-section);
     border-top: 1px solid var(--ee-border);
     color: var(--ee-muted);
 }
 
 .footer-main {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.25rem;
-    padding-bottom: 1.25rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.7fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 2rem;
+    padding-bottom: 1.75rem;
 }
 
 .footer-brand {
@@ -115,12 +114,57 @@ body > main {
 .footer-tagline {
     margin: 0.6rem 0 0;
     font-size: 0.9rem;
+    color: var(--ee-heading);
+}
+
+.footer-description {
+    max-width: 38ch;
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+}
+
+.footer-heading {
+    margin: 0 0 0.75rem;
+    color: var(--ee-heading);
+    font-size: 1.15rem;
+}
+
+.footer-plan p {
+    margin-bottom: 0.85rem;
+    font-size: 0.9rem;
+}
+
+.footer-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    background: var(--ee-surface);
+    border: 1px solid var(--ee-border);
+    border-radius: 0.65rem;
+    color: var(--ee-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-cta:hover {
+    background: var(--ee-soft-green);
+    color: var(--ee-heading);
+}
+
+.footer-cta svg {
+    flex-shrink: 0;
+    color: var(--ee-orange);
 }
 
 .footer-links {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -143,30 +187,59 @@ body > main {
 }
 
 .footer-brand:focus-visible,
-.footer-links a:focus-visible {
+.footer-links a:focus-visible,
+.footer-cta:focus-visible {
     outline: 2px solid var(--ee-focus);
     outline-offset: 3px;
     border-radius: 0.2rem;
 }
 
-.footer-copyright {
-    margin: 0;
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--ee-border);
+}
+
+.footer-copyright,
+.footer-note {
+    margin: 0;
     font-size: 0.85rem;
 }
 
-@media (max-width: 575.98px) {
+/* Leave room for the fixed back-to-top arrow beside the footer's bottom row. */
+@media (min-width: 576px) {
+    .footer-bottom {
+        padding-right: 4rem;
+    }
+}
+
+@media (max-width: 991.98px) {
     .footer-main {
-        flex-direction: column;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+        gap: 1.5rem;
+    }
+
+    .footer-identity {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .footer-identity {
         text-align: center;
     }
 
-    .footer-links {
-        justify-content: center;
+    .footer-description {
+        margin-inline: auto;
     }
 
-    .footer-copyright {
+    .footer-bottom {
+        flex-direction: column;
+        justify-content: center;
         text-align: center;
     }
 }
@@ -692,4 +765,28 @@ body > main {
 
     font-size: 2.5rem;
     font-weight: bold;
+}
+
+/* A single page crossfade keeps all theme colours changing together. */
+::view-transition {
+    pointer-events: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 300ms;
+    animation-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .form-control,
+    .form-select,
+    .btn {
+        transition: none;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
 }
