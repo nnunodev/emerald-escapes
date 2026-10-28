@@ -8,13 +8,23 @@ if (enquiryForm) {
     const formMessage = document.getElementById("formMessage");
     const enquirySuccess = document.getElementById("enquirySuccess");
     const enquiryHeading = document.getElementById("enquiryHeading");
+    const confirmationHeading = document.getElementById("confirmationHeading");
     const newEnquiryBtn = document.getElementById("newEnquiryBtn");
 
     // Input fields
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
     const phoneInput = document.getElementById("phone");
+    const queryTypeInput = document.getElementById("queryType");
     const messageInput = document.getElementById("message");
+    const fields = [nameInput, emailInput, phoneInput, queryTypeInput, messageInput];
+
+    // Keep screen-reader error states in sync with the visible validation feedback.
+    function updateValidationState() {
+        fields.forEach(function (input) {
+            input.setAttribute("aria-invalid", String(!input.validity.valid));
+        });
+    }
 
 
     /* Validate Form Fields */
@@ -58,6 +68,10 @@ if (enquiryForm) {
                 ? ""
                 : "Message must contain at least 20 characters"
         );
+
+        if (enquiryForm.classList.contains("was-validated")) {
+            updateValidationState();
+        }
     }
 
 
@@ -68,6 +82,8 @@ if (enquiryForm) {
 
             input.addEventListener("input", validateFields);
         });
+
+    queryTypeInput.addEventListener("change", validateFields);
 
 
     /* Form Submission */
@@ -82,6 +98,7 @@ if (enquiryForm) {
 
         // Show Bootstrap validation feedback
         enquiryForm.classList.add("was-validated");
+        updateValidationState();
 
         // Stop if any field is invalid
         if (!enquiryForm.checkValidity()) {
@@ -90,6 +107,7 @@ if (enquiryForm) {
             formMessage.textContent =
                 "Please correct the highlighted fields.";
 
+            enquiryForm.querySelector(":invalid").focus();
             return;
         }
 
@@ -105,15 +123,17 @@ if (enquiryForm) {
         enquiryForm.classList.remove("was-validated");
 
         // Clear custom validation errors
-        [nameInput, emailInput, phoneInput, messageInput]
-            .forEach(function (input) {
-
-                input.setCustomValidity("");
-            });
+        fields.forEach(function (input) {
+            input.setCustomValidity("");
+            input.removeAttribute("aria-invalid");
+        });
 
         // Clear previous error messages
         formMessage.textContent = "";
         formMessage.className = "d-none";
+
+        // Keep keyboard navigation with the newly displayed confirmation.
+        confirmationHeading.focus();
     });
 
 

@@ -25,18 +25,16 @@
                     <span>Emerald Escapes</span>
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-                    aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="mainNav">
+                <div class="collapse navbar-collapse order-3 order-lg-1" id="mainNav">
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link" href="index.html">Home</a>
                         <a class="nav-link" href="experiences.html">Experiences</a>
                         <a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
                     </div>
-                    <button type="button" id="themeToggle" class="theme-toggle ms-lg-3 mt-3 mt-lg-0 mb-2 mb-lg-0"
+                </div>
+
+                <div class="navbar-actions d-flex align-items-center gap-1 ms-auto ms-lg-3 order-2">
+                    <button type="button" id="themeToggle" class="theme-toggle"
                         role="switch" aria-checked="false" aria-label="Dark mode">
                         <svg class="theme-icon theme-icon-moon" width="22" height="22" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
@@ -49,6 +47,10 @@
                             <circle cx="12" cy="12" r="4"></circle>
                             <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
                         </svg>
+                    </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
 
@@ -106,8 +108,9 @@
                                             <label for="name" class="form-label">
                                                 Full Name <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
-                                            <input type="text" class="form-control" id="name" name="name" required>
-                                            <div class="invalid-feedback">
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                aria-describedby="nameError" required>
+                                            <div id="nameError" class="invalid-feedback">
                                                 Please enter your name.
                                             </div>
                                         </div>
@@ -117,8 +120,9 @@
                                             <label for="email" class="form-label">
                                                 Email Address <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
-                                            <input type="email" class="form-control" id="email" name="email" required>
-                                            <div class="invalid-feedback">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                aria-describedby="emailError" required>
+                                            <div id="emailError" class="invalid-feedback">
                                                 Please enter a valid email, such as name@example.com
                                             </div>
                                         </div>
@@ -129,8 +133,8 @@
                                                 Phone Number <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
                                             <input type="tel" class="form-control" id="phone" name="phone"
-                                                placeholder="087 123 4567" required>
-                                            <div class="invalid-feedback">
+                                                placeholder="087 123 4567" aria-describedby="phoneError" required>
+                                            <div id="phoneError" class="invalid-feedback">
                                                 Please enter a valid phone number (7-15 digits).
                                             </div>
                                         </div>
@@ -140,7 +144,8 @@
                                             <label for="queryType" class="form-label">
                                                 Query Type <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
-                                            <select class="form-select" id="queryType" name="queryType" required>
+                                            <select class="form-select" id="queryType" name="queryType"
+                                                aria-describedby="queryTypeError" required>
                                                 <option value="">
                                                     Select an option
                                                 </option>
@@ -151,7 +156,7 @@
                                                 </option>
                                                 <option value="other">Other</option>
                                             </select>
-                                            <div class="invalid-feedback">
+                                            <div id="queryTypeError" class="invalid-feedback">
                                                 Please select a query type.
                                             </div>
                                         </div>
@@ -162,8 +167,8 @@
                                                 Your Message <span class="required-marker" aria-hidden="true">*</span>
                                             </label>
                                             <textarea class="form-control" id="message" name="message" rows="5"
-                                                minlength="20" required></textarea>
-                                            <div class="invalid-feedback">
+                                                minlength="20" aria-describedby="messageError" required></textarea>
+                                            <div id="messageError" class="invalid-feedback">
                                                 Your message must contain
                                                 at least 20 characters.
                                             </div>
@@ -190,7 +195,7 @@
                                         &#10003;
                                     </div>
 
-                                    <h2 class="h3 mb-3">Thank You!</h2>
+                                    <h2 id="confirmationHeading" class="h3 mb-3" tabindex="-1">Thank You!</h2>
 
                                     <p class="lead">
                                         Your enquiry has been submitted successfully.

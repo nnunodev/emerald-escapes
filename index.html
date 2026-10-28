@@ -25,18 +25,16 @@
                     <span>Emerald Escapes</span>
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-                    aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="mainNav">
+                <div class="collapse navbar-collapse order-3 order-lg-1" id="mainNav">
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                         <a class="nav-link" href="experiences.html">Experiences</a>
                         <a class="nav-link" href="contact.html">Contact</a>
                     </div>
-                    <button type="button" id="themeToggle" class="theme-toggle ms-lg-3 mt-3 mt-lg-0 mb-2 mb-lg-0"
+                </div>
+
+                <div class="navbar-actions d-flex align-items-center gap-1 ms-auto ms-lg-3 order-2">
+                    <button type="button" id="themeToggle" class="theme-toggle"
                         role="switch" aria-checked="false" aria-label="Dark mode">
                         <svg class="theme-icon theme-icon-moon" width="22" height="22" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
@@ -49,6 +47,10 @@
                             <circle cx="12" cy="12" r="4"></circle>
                             <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
                         </svg>
+                    </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
 

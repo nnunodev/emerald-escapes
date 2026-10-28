@@ -281,6 +281,29 @@ body > main {
     transition: transform 200ms ease;
 }
 
+/* Keep the theme switch beside the mobile menu, above the collapsible links. */
+.navbar-actions {
+    flex-shrink: 0;
+}
+
+.navbar-actions .navbar-toggler {
+    min-height: 44px;
+}
+
+/* Leave room for both controls on narrow phones. */
+@media (max-width: 399.98px) {
+    .navbar-brand {
+        gap: 0.4rem;
+        margin-right: 0.25rem;
+        font-size: 1rem;
+    }
+
+    .navbar-brand .brand-logo {
+        width: 34px;
+        height: 34px;
+    }
+}
+
 .navbar-brand:hover .brand-logo,
 .navbar-brand:focus-visible .brand-logo {
     transform: rotate(-4deg);
