@@ -18,16 +18,30 @@
         const toggle = document.getElementById("themeToggle");
         if (toggle) {
             toggle.setAttribute("aria-checked", String(theme === "dark"));
-            toggle.title = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+            if (theme === "dark") {
+                toggle.title = "Switch to light mode";
+            } else {
+                toggle.title = "Switch to dark mode";
+            }
         }
         const themeColour = document.querySelector('meta[name="theme-color"]');
         if (themeColour) {
-            themeColour.content = theme === "dark" ? "#101b17" : "#198754";
+            if (theme === "dark") {
+                themeColour.content = "#101b17";
+            } else {
+                themeColour.content = "#198754";
+            }
         }
     }
 
     function preferredTheme() {
-        return selectedTheme || (systemTheme.matches ? "dark" : "light");
+        if (selectedTheme) {
+            return selectedTheme;
+        }
+        if (systemTheme.matches) {
+            return "dark";
+        }
+        return "light";
     }
 
     applyTheme(preferredTheme());
@@ -38,9 +52,12 @@
         if (!toggle) return;
 
         toggle.addEventListener("click", function () {
-            const currentTheme = selectedTheme || document.documentElement.getAttribute("data-bs-theme");
-            selectedTheme = currentTheme === "dark"
-                ? "light" : "dark";
+            const currentTheme = document.documentElement.getAttribute("data-bs-theme");
+            if (currentTheme === "dark") {
+                selectedTheme = "light";
+            } else {
+                selectedTheme = "dark";
+            }
             applyTheme(selectedTheme);
             try {
                 localStorage.setItem(storageKey, selectedTheme);
@@ -54,11 +71,4 @@
         if (!selectedTheme) applyTheme(preferredTheme());
     });
 
-    // Keep open pages in step when the preference changes in another tab.
-    window.addEventListener("storage", function (event) {
-        if (event.key !== storageKey && event.key !== null) return;
-        selectedTheme = event.newValue === "dark" || event.newValue === "light"
-            ? event.newValue : null;
-        applyTheme(preferredTheme());
-    });
 })();

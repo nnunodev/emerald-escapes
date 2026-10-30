@@ -128,13 +128,6 @@ body>main {
     color: #b45a17;
 }
 
-.footer-brand:focus-visible,
-.footer-cta:focus-visible {
-    outline: 2px solid #164a3a;
-    outline-offset: 3px;
-    border-radius: 0.2rem;
-}
-
 .footer-bottom {
     display: flex;
     flex-wrap: wrap;
@@ -190,11 +183,6 @@ body>main {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-.back-to-top:focus-visible {
-    outline: 3px solid #164a3a;
-    outline-offset: 3px;
-}
-
 /* Navigation and theme switch */
 .navbar-brand {
     display: inline-flex;
@@ -217,8 +205,7 @@ body>main {
     min-height: 44px;
 }
 
-.navbar-brand:hover .brand-logo,
-.navbar-brand:focus-visible .brand-logo {
+.navbar-brand:hover .brand-logo {
     transform: rotate(-4deg);
 }
 
@@ -241,12 +228,12 @@ body>main {
     background: rgba(0, 0, 0, 0.12);
 }
 
-.theme-toggle:focus-visible {
-    outline: 3px solid #ffffff;
-    outline-offset: 3px;
+/* Show one theme icon at a time. */
+.theme-icon {
+    font-size: 22px;
+    line-height: 1;
 }
 
-/* Show one theme icon at a time. */
 .theme-icon-sun {
     display: none;
 }
@@ -286,15 +273,6 @@ body>main {
     opacity: 0;
     pointer-events: none;
     transition: opacity 150ms ease;
-}
-
-.navbar .navbar-nav .nav-link:focus-visible::after {
-    opacity: 1;
-}
-
-.navbar .nav-link:focus-visible {
-    outline: 2px solid #ffffff;
-    outline-offset: 2px;
 }
 
 /* Home page hero banner */
@@ -343,8 +321,7 @@ body>main {
     font-weight: 600;
 }
 
-.hero .hero-cta:hover,
-.hero .hero-cta:focus-visible {
+.hero .hero-cta:hover {
     color: #164a3a;
     background-color: #fff1e3;
     border-color: #f3b56d;
@@ -356,18 +333,12 @@ body>main {
     border-color: #ffffff;
 }
 
-.hero-cta:focus-visible {
-    outline: 3px solid #ffffff;
-    outline-offset: 4px;
-}
-
 .hero-cta svg {
     color: #b45a17;
     transition: transform 180ms ease;
 }
 
-.hero-cta:hover svg,
-.hero-cta:focus-visible svg {
+.hero-cta:hover svg {
     transform: translateX(3px);
 }
 
@@ -473,11 +444,6 @@ body>main {
     border-radius: 0.65rem;
 }
 
-.experience-filter-panel .form-select:focus {
-    border-color: #198754;
-    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
-}
-
 .favourites-status {
     font-size: 1rem;
     font-weight: 700;
@@ -507,12 +473,6 @@ body>main {
     background: #164a3a;
     color: #ffffff;
     border-color: #164a3a;
-}
-
-.favourites-callout:focus-visible,
-.experience-results-bar .btn:focus-visible {
-    outline: 3px solid #164a3a;
-    outline-offset: 3px;
 }
 
 .favourites-heart {
@@ -628,14 +588,6 @@ body>main {
     background: #f6b66b;
 }
 
-[data-bs-theme="dark"] .footer-brand:focus-visible,
-[data-bs-theme="dark"] .footer-cta:focus-visible,
-[data-bs-theme="dark"] .back-to-top:focus-visible,
-[data-bs-theme="dark"] .favourites-callout:focus-visible,
-[data-bs-theme="dark"] .experience-results-bar .btn:focus-visible {
-    outline-color: #a3e4bd;
-}
-
 [data-bs-theme="dark"] .back-to-top,
 [data-bs-theme="dark"] .experience-preview {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
@@ -664,7 +616,6 @@ body>main {
     color: #b0c0b6;
 }
 
-[data-bs-theme="dark"] .experience-filter-panel .form-select:focus,
 [data-bs-theme="dark"] .favourites-callout {
     border-color: #88d9ab;
 }
@@ -702,15 +653,10 @@ body>main {
 }
 
 [data-bs-theme="dark"] .btn.btn-outline-success:hover,
-[data-bs-theme="dark"] .btn.btn-outline-success:focus-visible,
 [data-bs-theme="dark"] .btn.btn-outline-success:active {
     color: #10271b;
     background-color: #88d9ab;
     border-color: #88d9ab;
-}
-
-[data-bs-theme="dark"] .btn-outline-success:focus-visible {
-    box-shadow: 0 0 0 0.25rem rgba(136, 217, 171, 0.5);
 }
 
 [data-bs-theme="dark"] .btn.btn-outline-success:disabled {
@@ -820,28 +766,5 @@ body>main {
     .navbar-brand .brand-logo {
         width: 34px;
         height: 34px;
-    }
-}
-
-/* Animations respect the user's reduced-motion setting. */
-@media (prefers-reduced-motion: reduce) {
-
-    .back-to-top,
-    .brand-logo,
-    .navbar .navbar-nav .nav-link::after,
-    .hero-cta svg,
-    .experience-preview,
-    .form-control,
-    .form-select,
-    .btn {
-        transition: none;
-    }
-
-    .navbar-brand:hover .brand-logo,
-    .navbar-brand:focus-visible .brand-logo,
-    .hero-cta:hover svg,
-    .hero-cta:focus-visible svg,
-    .experience-preview:hover {
-        transform: none;
     }
 }

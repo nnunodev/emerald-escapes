@@ -8,7 +8,6 @@ if (enquiryForm) {
     const formMessage = document.getElementById("formMessage");
     const enquirySuccess = document.getElementById("enquirySuccess");
     const enquiryHeading = document.getElementById("enquiryHeading");
-    const confirmationHeading = document.getElementById("confirmationHeading");
     const newEnquiryBtn = document.getElementById("newEnquiryBtn");
 
     // Input fields
@@ -32,20 +31,20 @@ if (enquiryForm) {
     function validateFields() {
 
         // Name cannot be empty or contain only spaces
-        nameInput.setCustomValidity(
-            nameInput.value.trim()
-                ? ""
-                : "Please enter your name"
-        );
+        if (nameInput.value.trim() === "") {
+            nameInput.setCustomValidity("Please enter your name");
+        } else {
+            nameInput.setCustomValidity("");
+        }
 
         // Email must contain a domain extension
         const emailPattern = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
 
-        emailInput.setCustomValidity(
-            emailInput.value && !emailPattern.test(emailInput.value)
-                ? "Please enter a valid email address"
-                : ""
-        );
+        if (emailInput.value && !emailPattern.test(emailInput.value)) {
+            emailInput.setCustomValidity("Please enter a valid email address");
+        } else {
+            emailInput.setCustomValidity("");
+        }
 
         // Reject blank or whitespace-only phone numbers as well as invalid formats.
         const phone = phoneInput.value.trim();
@@ -56,18 +55,18 @@ if (enquiryForm) {
             digits.length >= 7 &&
             digits.length <= 15;
 
-        phoneInput.setCustomValidity(
-            validPhone
-                ? ""
-                : "Please enter a valid phone number"
-        );
+        if (validPhone) {
+            phoneInput.setCustomValidity("");
+        } else {
+            phoneInput.setCustomValidity("Please enter a valid phone number");
+        }
 
         // Message must contain at least 20 characters
-        messageInput.setCustomValidity(
-            messageInput.value.trim().length >= 20
-                ? ""
-                : "Message must contain at least 20 characters"
-        );
+        if (messageInput.value.trim().length >= 20) {
+            messageInput.setCustomValidity("");
+        } else {
+            messageInput.setCustomValidity("Message must contain at least 20 characters");
+        }
 
         if (enquiryForm.classList.contains("was-validated")) {
             updateValidationState();
@@ -107,7 +106,6 @@ if (enquiryForm) {
             formMessage.textContent =
                 "Please correct the highlighted fields.";
 
-            enquiryForm.querySelector(":invalid").focus();
             return;
         }
 
@@ -132,8 +130,6 @@ if (enquiryForm) {
         formMessage.textContent = "";
         formMessage.className = "d-none";
 
-        // Keep keyboard navigation with the newly displayed confirmation.
-        confirmationHeading.focus();
     });
 
 
@@ -148,7 +144,5 @@ if (enquiryForm) {
         enquiryForm.classList.remove("d-none");
         enquiryHeading.classList.remove("d-none");
 
-        // Focus on the name field
-        nameInput.focus();
     });
 }

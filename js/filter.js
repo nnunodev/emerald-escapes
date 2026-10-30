@@ -49,8 +49,16 @@ function filterExperiences() {
         if (matches) visibleCount++;
     });
 
-    const label = visibleCount === 1 ? " experience" : " experiences";
-    resultsCount.textContent = "Showing " + visibleCount + (onlyFavourites ? " saved" : "") + label;
+    let label = " experiences";
+    if (visibleCount === 1) {
+        label = " experience";
+    }
+
+    let resultText = "Showing " + visibleCount;
+    if (onlyFavourites) {
+        resultText += " saved";
+    }
+    resultsCount.textContent = resultText + label;
     noResults.classList.toggle("d-none", visibleCount > 0);
 
     if (onlyFavourites && savedCount === 0) {
@@ -61,11 +69,13 @@ function filterExperiences() {
         noResults.textContent = "No experiences match these filters. Try another category or price, or select Clear filters.";
     }
 
-    favouritesHint.textContent = savedCount === 0
-        ? "Save experiences using the hearts below."
-        : onlyFavourites
-            ? "Favourites filter on. Select again to turn it off."
-            : "Select to show your saved experiences.";
+    if (savedCount === 0) {
+        favouritesHint.textContent = "Save experiences using the hearts below.";
+    } else if (onlyFavourites) {
+        favouritesHint.textContent = "Favourites filter on. Select again to turn it off.";
+    } else {
+        favouritesHint.textContent = "Select to show your saved experiences.";
+    }
 
     clearFilters.disabled = selectedCategory === "all" && selectedPrice === "all" && !onlyFavourites;
 }
