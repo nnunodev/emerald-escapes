@@ -13,7 +13,7 @@ A responsive travel website for a fictional company offering holidays, short bre
 - A responsive footer with travel information and an Ireland-themed trip-planning prompt.
 - Responsive layouts and a custom landscape logo.
 - Simple fading navigation underlines on hover.
-- A back-to-top arrow with smooth scrolling.
+- A compact back-to-top tab with an orange accent and smooth scrolling.
 
 ## Run locally
 
@@ -40,7 +40,7 @@ vendor/bootstrap/
 
 Built with HTML, CSS, JavaScript and Bootstrap 5.3.8. Bootstrap is bundled locally and retains its copyright and MIT licence notices.
 
-The theme switch uses the official [moon](https://icons.getbootstrap.com/icons/moon/) and [sun](https://icons.getbootstrap.com/icons/sun/) icons from Bootstrap Icons 1.13.2. Its stylesheet, icon fonts and MIT licence are included in `vendor/bootstrap-icons/` for offline use.
+The site uses official [Bootstrap Icons 1.13.2](https://icons.getbootstrap.com/) for theme controls, navigation arrows, favourite hearts and the enquiry confirmation. Its stylesheet, icon fonts and MIT licence are included in `vendor/bootstrap-icons/` for offline use.
 
 Headings use Lora by Cyreal; body text and controls use DM Sans by Colophon Foundry. The Latin variable WOFF2 fonts are bundled from Google Fonts for offline use. Their SIL Open Font License notices are included in `fonts/lora-OFL.txt` and `fonts/dm-sans-OFL.txt`.
 

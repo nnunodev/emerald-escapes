@@ -39,9 +39,9 @@ if (favouritesCount) {
 
         favouritesCount.textContent = "Show favourites (" + count + ")";
         if (count === 0) {
-            favouritesHeart.textContent = "♡";
+            favouritesHeart.className = "bi bi-heart favourites-heart";
         } else {
-            favouritesHeart.textContent = "♥";
+            favouritesHeart.className = "bi bi-heart-fill favourites-heart";
         }
         document.dispatchEvent(new Event("favouritesChanged"));
     }
@@ -54,13 +54,17 @@ if (favouritesCount) {
         const experienceCard = button.closest(".experience-card");
         experienceCard.dataset.saved = String(isSaved);
         const title = experienceCard.querySelector("h2").textContent.trim();
+        const icon = button.querySelector(".bi");
+        const label = button.querySelector(".favourite-label");
 
         if (isSaved) {
             button.setAttribute("aria-label", "Remove " + title + " from favourites");
-            button.textContent = "♥ Saved to Favourites";
+            icon.className = "bi bi-heart-fill me-1";
+            label.textContent = "Saved to Favourites";
         } else {
             button.setAttribute("aria-label", "Save " + title + " to favourites");
-            button.textContent = "♡ Save to Favourites";
+            icon.className = "bi bi-heart me-1";
+            label.textContent = "Save to Favourites";
         }
 
         // Update accessibility attribute
