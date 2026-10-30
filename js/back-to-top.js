@@ -22,7 +22,8 @@
     });
     window.addEventListener("resize", updateVisibility);
     window.addEventListener("pageshow", updateVisibility);
-    // CSS now handles visibility; the initial hidden attribute prevents a pre-script flash.
+    /* Remove the HTML hidden attribute after setting up the button.
+       CSS then controls when it appears and how it fades.*/
     button.hidden = false;
     updateVisibility();
 })();

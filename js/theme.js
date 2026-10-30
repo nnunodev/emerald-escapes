@@ -4,17 +4,33 @@
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
     let selectedTheme = null;
 
-    try {
-        const savedTheme = localStorage.getItem(storageKey);
-        if (savedTheme === "light" || savedTheme === "dark") {
-            selectedTheme = savedTheme;
+    function saveTheme() {
+        try {
+            localStorage.setItem(storageKey, selectedTheme);
+        } catch (error) {
+            // Local links still carry the choice when browser storage is blocked.
         }
-    } catch (error) {
-        // The switch still works if browser storage is unavailable.
+    }
+
+    function updateLocalLinks(theme) {
+        if (location.protocol !== "file:" || selectedTheme === null) return;
+
+        // Browsers may give each local HTML file its own storage.
+        // Carry the choice in the address when opening another page offline.
+        history.replaceState(null, "", "#theme=" + theme);
+        const links = document.querySelectorAll("a[href]");
+        links.forEach(function (link) {
+            const url = new URL(link.href);
+            if (url.protocol === "file:" && url.pathname.endsWith(".html")) {
+                url.hash = "theme=" + theme;
+                link.href = url.href;
+            }
+        });
     }
 
     function applyTheme(theme) {
         document.documentElement.setAttribute("data-bs-theme", theme);
+        updateLocalLinks(theme);
         const toggle = document.getElementById("themeToggle");
         if (toggle) {
             toggle.setAttribute("aria-checked", String(theme === "dark"));
@@ -44,10 +60,31 @@
         return "light";
     }
 
-    applyTheme(preferredTheme());
+    function loadTheme(fromLink) {
+        try {
+            const savedTheme = localStorage.getItem(storageKey);
+            if (savedTheme === "light" || savedTheme === "dark") {
+                selectedTheme = savedTheme;
+            } else {
+                selectedTheme = null;
+            }
+        } catch (error) {
+            // Keep the current choice if browser storage is unavailable.
+        }
+        if (fromLink === true && location.protocol === "file:") {
+            const linkedTheme = location.hash.slice(1);
+            if (linkedTheme === "theme=light" || linkedTheme === "theme=dark") {
+                selectedTheme = linkedTheme.slice(6);
+                saveTheme();
+            }
+        }
+        applyTheme(preferredTheme());
+    }
+
+    loadTheme(true);
 
     document.addEventListener("DOMContentLoaded", function () {
-        applyTheme(preferredTheme());
+        loadTheme(true);
         const toggle = document.getElementById("themeToggle");
         if (!toggle) return;
 
@@ -62,16 +99,24 @@
             }
 
             applyTheme(selectedTheme);
-            try {
-                localStorage.setItem(storageKey, selectedTheme);
-            } catch (error) {
-                // Keep the chosen appearance for this page even without storage.
-            }
+            saveTheme();
         });
     });
 
     systemTheme.addEventListener("change", function () {
         if (!selectedTheme) applyTheme(preferredTheme());
+    });
+
+    // Update other open pages when the saved theme changes.
+    window.addEventListener("storage", function (event) {
+        if (event.key === storageKey || event.key === null) {
+            loadTheme();
+        }
+    });
+
+    // Restore the latest choice when returning with Back or Forward.
+    window.addEventListener("pageshow", function () {
+        loadTheme(true);
     });
 
 })();
