@@ -9,7 +9,7 @@ A responsive travel website for a fictional company offering holidays, short bre
 - Category and price filters, with results counts and a reset button.
 - Favourites saved in the browser, with an option to show saved experiences.
 - Booking enquiry form with client-side validation and confirmation feedback.
-- Light and dark themes with a remembered preference and a sun/moon control.
+- Light and dark themes with a remembered preference, gentle colour transitions and a sun/moon control.
 - A responsive footer with travel information and an Ireland-themed trip-planning prompt.
 - Responsive layouts and a custom landscape logo.
 - Simple fading navigation underlines on hover.

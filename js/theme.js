@@ -52,12 +52,15 @@
         if (!toggle) return;
 
         toggle.addEventListener("click", function () {
-            const currentTheme = document.documentElement.getAttribute("data-bs-theme");
-            if (currentTheme === "dark") {
+            if (selectedTheme === null) {
+                selectedTheme = document.documentElement.getAttribute("data-bs-theme");
+            }
+            if (selectedTheme === "dark") {
                 selectedTheme = "light";
             } else {
                 selectedTheme = "dark";
             }
+
             applyTheme(selectedTheme);
             try {
                 localStorage.setItem(storageKey, selectedTheme);
